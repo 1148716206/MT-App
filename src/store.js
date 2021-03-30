@@ -3,12 +3,16 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  position: '重庆'
+  position: {},
+  userName:''
 };
 
-const mutation = {
+const mutations = {
   setPosition(state, val){
     state.position = val;
+  },
+  setUserName(state, val){
+    state.userName = val
   }
 };
 
@@ -21,6 +25,6 @@ const actions = {
 
 export default new Vuex.Store({
   state,
-  mutation,
+  mutations,
   actions
 })

@@ -1,8 +1,23 @@
 <template>
   <div>
     <span class="name">按省份选择:</span>
-    <m-select :list="proviceList" title="省份" :value="province" :showWrapperActive="provinceActive" @change_active="changeProvinceActive" @change="changeProvince"/>
-    <m-select :list="cityList" title="城市" :value="city" :showWrapperActive="cityActive" @change_active="changeCityActive" @change="changeCity"/>
+    <m-select :list="provinceList"
+              title="省份"
+              :value="province"
+              :showWrapperActive="provinceActive"
+              @change_active="changeProvinceActive"
+              @change="changeProvince"
+              className="province"
+    />
+    <m-select :list="cityList"
+              title="城市"
+              :value="city"
+              :showWrapperActive="cityActive"
+              @change_active="changeCityActive"
+              @change="changeCity"
+              :disabled="cityDisabled"
+              className="city"
+    />
     <span>直接搜索：</span>
     <el-select
       v-model="searchWord"
@@ -24,27 +39,34 @@
 
 <script>
   import MSelect from './select.vue'
-
+  import api from  '../../api/index'
   export default {
     name: "province",
     data() {
       return {
-        proviceList: ['山东', '甘肃', '江苏', '北京', '云南', '海南', '浙江', '上海', '天津', '陕西', '新疆', '贵州',
-          /*'安徽', '澳门', '湖南', '河北', '香港', '辽宁', '四川', '宁夏', '吉林', '福建', '湖北', '广东',
-          '重庆', '山西', '江西', '黑龙江', '青海', '河南', '台湾', '内蒙古', '西藏', '广西'*/
-        ],
+        provinceList: [],
         province: '省份',
-        cityList: ['万州','忠县','梁平','武隆','长寿'],
+        cityList: [],
         city: '城市',
         cityActive: false,
         provinceActive: false,
         searchList: ['万州','忠县','梁平','武隆','长寿'],
         searchWord: '',
-        loading: false
+        loading: false,
+        cityDisabled:true
       }
     },
     components: {
       MSelect
+    },
+    created() {
+      api.getProvinceList().then((res) => {
+        this.provinceList = res.data.data.map((item) => {
+          item.name = item.provinceName;
+          return item
+        });
+        console.log(this.provinceList)
+      })
     },
     methods: {
       changeProvinceActive(flag){
@@ -59,11 +81,15 @@
           this.provinceActive = false;
         }
       },
-      changeProvince(value){
-this.province = value
+      changeProvince(item){
+        this.province = item.name;
+        this.cityDisabled=false;
+        this.cityList = item.cityInfoList
       },
-      changeCity(value){
-        this.city = value
+      changeCity(item){
+        this.city = item.name;
+        this.$store.dispatch('setPosition',item)
+        this.$router.push({name:'index'})
       },
       remoteMethod(val){
         //请求后端接口

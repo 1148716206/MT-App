@@ -5,6 +5,8 @@ import blankPage from '@/layout/blank.vue'
 import index from '../page/index.vue'
 import ChangeCity from '../page/changeCity.vue'
 import goodsList from '../page/goodsList.vue'
+import Login from '../page/login'
+import Register from '../page/register'
 
 Vue.use(Router)
 
@@ -31,7 +33,17 @@ export default new Router({
     }, {
       path: '/blank',
       name: 'blank',
-      component: blankPage
+      component: blankPage,
+      children: [{
+        path:'/login',
+        name:'login',
+        component:Login
+      },{
+        path:'/register',
+        name:'register',
+        component:Register
+      }
+      ]
     }
   ]
 })

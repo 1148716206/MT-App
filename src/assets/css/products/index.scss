@@ -65,6 +65,7 @@
 
       .deal-items {
         .items {
+          margin-right: 150px;
           float: left;
           cursor: pointer;
           border-radius: 4px;
@@ -238,7 +239,7 @@
 
       &:nth-child(2) {
         border-radius: 100px;
-        background: #13D1BE;
+        background: #FFC300;
         color: #FFF;
         height: 22px;
         line-height: 22px;

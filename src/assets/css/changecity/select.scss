@@ -1,6 +1,12 @@
 .choose-wrap {
   box-sizing: border-box;
   display: inline-block;
+  &.disabled{
+    &:hover{
+
+    cursor:not-allowed;
+    }
+  }
   > .choose {
     cursor: pointer;
     border-radius: 4px;
@@ -52,6 +58,7 @@
 
       &.active {
         display: block;
+       min-width: 350px;
       }
 
       &::before {
@@ -66,6 +73,11 @@
       }
 
       .wrapper {
+        width: 264px;
+        &.city{
+          width: 665px;
+          background-color: red;
+        }
         .col {
           float: left;
           .mt-item {
@@ -99,7 +111,7 @@
        position: absolute;
        cursor: default;
        top: 45px;
-       min-width: 150px;
+       min-width: 350px;
        height: 375px;
        padding: 20px 0 20px 15px;
        box-sizing: border-box;

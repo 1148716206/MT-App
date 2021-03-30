@@ -13,7 +13,7 @@
        </el-row>
       </el-col>
       <el-col :span="5">
-        map + fav
+
       </el-col>
     </el-row>
   </div>
