@@ -52,28 +52,28 @@
       }
     },
     methods: {
-		  submit() {
-		    console.log(this.userName)
-        if(!this.userName){
+		  submit() {                          //登录
+		    // console.log(this.userName)
+        if(!this.userName){               //不输入用户名 进行提示
           this.error = '请输入账号';
           return false
         }
-        if(!this.password){
+        if(!this.password){                //不输入密码 进行提示
           this.error = '请输入密码';
           return false
         }
-        api.login({
+        api.login({                   //axios进行请求 传入参数
           params: {
             userName: this.userName,
             password: this.password
           }
         }).then((res) => {
-          console.log(res)
+          // console.log(res)
           if(res.data.status === 'success'){
-            this.$router.push({name:'index'})
-            this.$store.commit('setUserName',this.userName)
+            this.$router.push({name:'index'})         //成功执行后 跳转到主页
+            this.$store.commit('setUserName',this.userName)   //登录、注册消失
           }else {
-            this.error = res.data.msg
+            this.error = res.data.msg                   //返回失败信息
           }
         })
       }

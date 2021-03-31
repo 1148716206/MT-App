@@ -1,49 +1,48 @@
 import axios from '../axios.js'
 
 var api = {
-  searchHotWords(params) {
+  searchHotWords(params) {               //查询最近热门搜索
     return axios.get('/api/meituan/header/searchHotWords.json',params)
   },
-  getSearchWords(){
+  getSearchWords(){                       //搜索框列表数据获取
     return axios.get('/api/meituan/header/search.json',)
   },
-  getMenuList(){
+  getMenuList(){                          //首页左侧导航条 导航数据
     return axios.get('/api/meituan/index/nav.json',)
   },
-  resultsByKeyWords(){
+  resultsByKeyWords(){                    //首页下方（有格调内容区数据获取
     return axios.get('/api/meituan/index/resultsByKeywords.json',)
   },
-  getProductsList(){
+  getProductsList(){                      //产品展示列表数据获取
     return axios.get('/api/meituan/list/goodsList.json',)
   },
-  getHotCity(){
+  getHotCity(){                           //获取热门城市
     return axios.get('/api/meituan/city/hot.json',)
   },
-  getRecentCity(){
+  getRecentCity(){                        //最近搜索城市
     return axios.get('/api/meituan/city/recents.json',)
   },
-  getProvinceList(){
+  getProvinceList(){                      //获取省份列表
     return axios.get('/api/meituan/city/province.json',)
   },
-  getCurPosition(){
+  getCurPosition(){                      //获取当前位置信息
     return axios.get('/api/meituan/city/getPosition.json')
   },
-  getCityList(){
+  getCityList(){                          //获取城市列表接口
     return axios.get('/api/meituan/city/cityList.json')
   },
-  getClassify(){
+  getClassify(){                          //获取分类列表
     return axios.get('/api/meituan/list/classify.json')
   },
-  getAreaList(){
-    return axios.get('')
+  getAreaList(){                          //获取区域列表
+    return axios.get('/api/meituan/list/areaList.json')
   },
-  login(params){
+  login(params){                          //用户登录接口
     return axios.get('/api/meituan/login',params)
   },
-  register(params) {
+  register(params) {                      //用户注册接口
     return axios.get('/api/meituan/register',params)
   }
-
 
 
 }

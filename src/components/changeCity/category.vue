@@ -25,10 +25,10 @@
       }
     },
     created() {
-		  api.getCityList().then((res) => {
+		  api.getCityList().then((res) => {                   //请求数据 获得城市列表
         var obj = {};
         res.data.data.forEach((item, index) => {
-          if(!obj[item.firstChar.toUpperCase()]) {
+          if(!obj[item.firstChar.toUpperCase()]) {            //获得城市的首字母，大写
             obj[item.firstChar.toUpperCase()] = [];
           }
           obj[item.firstChar.toUpperCase()].push(item);
@@ -41,8 +41,8 @@
     },
     methods: {
 		  changeCity(item) {
-		    this.$store.dispatch('setPosition', item);
-		    this.$router.push({name:'index'})
+		    this.$store.dispatch('setPosition', item);        //改变当前位置
+		    this.$router.push({name:'index'})                      // 跳转
       }
     }
   }

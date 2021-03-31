@@ -1,6 +1,7 @@
 import axios from 'axios'
 axios.defaults.baseURL = 'http://open.duyiedu.com';
 axios.interceptors.request.use(function (config) {
+  //请求拦截器
   // 在发送请求之前做些什么
   // console.log(config);
   config.params = {

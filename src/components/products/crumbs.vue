@@ -3,7 +3,6 @@
     <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
     <el-breadcrumb-item>{{$store.state.position.name}}美团</el-breadcrumb-item>
     <el-breadcrumb-item>{{$store.state.position.name}}</el-breadcrumb-item>
-
   </el-breadcrumb>
 </template>
 

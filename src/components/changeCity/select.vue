@@ -32,12 +32,11 @@
       "className"
     ],
     computed:{
-      renderList:function() {
-
-        let col = Math.ceil(this.list.length / 12)
+      renderList:function() {                                   //渲染列表
+        let col = Math.ceil(this.list.length / 12)           //一列12个 换行
         let resultList = [];
         for (var i = 0; i < col; i++){
-          let data = this.list.slice(i * 12, i * 12 + 12);
+          let data = this.list.slice(i * 12, i * 12 + 12);      //换行后 从上一个重新开始计算
           resultList.push(data)
           // console.log(resultList)
         }

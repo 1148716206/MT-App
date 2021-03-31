@@ -60,12 +60,12 @@
       MSelect
     },
     created() {
-      api.getProvinceList().then((res) => {
-        this.provinceList = res.data.data.map((item) => {
-          item.name = item.provinceName;
+      api.getProvinceList().then((res) => {                    //请求数据 成功回调
+        this.provinceList = res.data.data.map((item) => {       //获取列表信息
+          item.name = item.provinceName;                         //填入
           return item
         });
-        console.log(this.provinceList)
+        // console.log(this.provinceList)
       })
     },
     methods: {
@@ -82,14 +82,14 @@
         }
       },
       changeProvince(item){
-        this.province = item.name;
-        this.cityDisabled=false;
-        this.cityList = item.cityInfoList
+        this.province = item.name;                      //改变省份
+        this.cityDisabled=false;                         //选择省份后，才能点击选择城市
+        this.cityList = item.cityInfoList                //cityInfoList 存储城市信息
       },
       changeCity(item){
-        this.city = item.name;
-        this.$store.dispatch('setPosition',item)
-        this.$router.push({name:'index'})
+        this.city = item.name;                          //改变城市
+        this.$store.dispatch('setPosition',item)    //改变城市后，设置当前位置
+        this.$router.push({name:'index'})                 //跳转到主页
       },
       remoteMethod(val){
         //请求后端接口

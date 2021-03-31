@@ -2,11 +2,12 @@
   <div class="m-products-list">
     <el-row>
       <ul>
+<!--        list 导航栏-->
         <li v-for="item in nav" :key="item.key" :class="{'s-nav-active':item.active}">{{item.name}}</li>
       </ul>
     </el-row>
     <el-row>
-
+<!--      商品列表-->
       <item v-for="(item, index) in productList" :key="index" :meta="item" />
 
     </el-row>

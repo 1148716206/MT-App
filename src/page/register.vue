@@ -10,6 +10,7 @@
       </header>
     </div>
     <div class="content">
+<!--      双向数据绑定，验证器模块-->
       <el-form :model="registerForm"
                status-icon
                :rules="rules"
@@ -29,7 +30,6 @@
             <div class="letter">
               <span>强</span>
               <span>中</span>
-
               <span>弱</span>
             </div>
           </div>
@@ -102,18 +102,18 @@
     methods: {
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
-          if (valid) {
-            api.register({
-              params: this.registerForm
-            }).then((res) => {
-              if(res.data.status === 'success'){
-                this.$router.push({name:'index'})
+          if (valid) {                                //验证信息成功
+            api.register({                      //提交注册申请
+              params: this.registerForm               //返回参数
+            }).then((res) => {                        //回调函数
+              if(res.data.status === 'success'){        //状态为success
+                this.$router.push({name:'index'})       //  跳转主页
               }else{
-                alert(res.data.msg)
+                alert(res.data.msg)                     //返回失败信息
               }
             })
           } else {
-            console.log('error submit!!');
+            console.log('error submit!!');              //提交失败
             return false;
           }
         });

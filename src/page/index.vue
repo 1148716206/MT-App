@@ -2,19 +2,23 @@
   <div class="page-index">
     <el-row>
       <el-col :span="5">
+<!--        左侧菜单-->
         <m-menu/>
       </el-col>
       <el-col :span="19">
+<!--        banner-->
         <m-life/>
       </el-col>
     </el-row>
     <el-row>
       <el-col :span="24">
+<!--        商家列表-->
         <container :nav="iStyle"/>
       </el-col>
     </el-row>
     <el-row>
       <el-col :span="24">
+<!--        商家列表-->
         <container :nav="recomment"/>
       </el-col>
     </el-row>

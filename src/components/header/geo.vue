@@ -32,7 +32,6 @@
     },
     created(){
       api.getCurPosition().then( (res) => {
-
         this.$store.dispatch('setPosition',res.data.data);
         this.nearCity = res.data.data.nearCity
         console.log(this.nearCity)
